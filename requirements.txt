@@ -1,3 +1,5 @@
+# requirements.txt
+
 definition_version: 2
 entities:
   streamlit_app:
