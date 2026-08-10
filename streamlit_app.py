@@ -7,7 +7,6 @@ import requests
 from snowflake.snowpark.functions import col
 cnx = st.connection("snowflake")
 session = cnx.session()
-url = ['https://my.smoothiefroot.com/api/fruit/watermelon']
 
 
 # Write directly to the app
@@ -35,14 +34,17 @@ if ingredients_list:
 
   for fruit_chosen in ingredients_list:
         ingredients_string += fruit_chosen + ' '
+        st.subheader(fruit_chosen + ' Nutrition Information')
+        url = ['https://my.smoothiefroot.com/api/fruit/']
+        smoothiefroot_response = requests.get(url[0] + fruit_chosen)
+        sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
+
         st.text(ingredients_string)
 
         my_insert_stmt = """ insert into SMOOTHIES.public.ORDERS(ingredients, name_on_order)
             values ('""" + ingredients_string + """', '""" + name_on_order + """')"""
 
-        smoothiefroot_response = requests.get(url[0])
-        sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
-
+        
         time_to_insert = st.button('Submit Order')
 
         if time_to_insert:
