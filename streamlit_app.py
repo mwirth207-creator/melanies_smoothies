@@ -32,7 +32,7 @@ ingredients_string = ''
 #url = ['https://my.smoothiefroot.com/api/fruit/']
 url = "https://my.smoothiefroot.com/api/fruit/"
 
-if ingredients_list: col(
+if ingredients_list: 
 
   for fruit_chosen in ingredients_list:
         ingredients_string += fruit_chosen + ' '
