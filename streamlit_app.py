@@ -43,11 +43,11 @@ if ingredients_list:
         smoothiefroot_response = requests.get(url[0])
         sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
 
-    time_to_insert = st.button('Submit Order')
+        time_to_insert = st.button('Submit Order')
 
-    if time_to_insert:
-        session.sql(my_insert_stmt).collect()
-        st.success(f'Your Smoothie is ordered, {name_on_order}!', icon="✅")
+        if time_to_insert:
+            session.sql(my_insert_stmt).collect()
+            st.success(f'Your Smoothie is ordered, {name_on_order}!', icon="✅")
 
     
 
