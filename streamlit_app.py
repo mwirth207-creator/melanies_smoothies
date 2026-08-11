@@ -21,6 +21,7 @@ st.write ('The name on your Smooothie will be ', name_on_order)
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'),col('SEARCH_ON'))
 #st.dataframe(data=my_dataframe, use_container_width=True)
 #st.stop()
+
 pd_df = my_dataframe.to_pandas()
 #st.dataframe(pd_df)
 #st.stop()
@@ -45,6 +46,11 @@ if ingredients_list:
         st_url = url + search_on
         st.write (st_url)
         smoothiefroot_response = requests.get(url)
+        
+        st.write(smoothiefroot_response.json())
+        st.stop()
+
+    
         #sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
         sf_df = st.dataframe(smoothiefroot_response.json(), use_container_width=True)
         st.text(ingredients_string)
