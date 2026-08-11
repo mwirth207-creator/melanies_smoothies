@@ -31,11 +31,9 @@ ingredients_list = st.multiselect(
     ,max_selections=5
     )
     
-ingredients_string = ''    
-#url = ['https://my.smoothiefroot.com/api/fruit/']
-url = "https://my.smoothiefroot.com/api/fruit/"
-
 if ingredients_list: 
+  ingredients_string = ''    
+  url = "https://my.smoothiefroot.com/api/fruit/"
 
   for fruit_chosen in ingredients_list:
         ingredients_string += fruit_chosen + ' '
@@ -47,8 +45,8 @@ if ingredients_list:
         st_url = url + search_on
         st.write (st_url)
         smoothiefroot_response = requests.get(url)
-        sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
-
+        #sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
+        sf_df = st.dataframe(smoothiefroot_response.json(), use_container_width=True)
         st.text(ingredients_string)
 
         my_insert_stmt = """ insert into SMOOTHIES.public.ORDERS(ingredients, name_on_order)
