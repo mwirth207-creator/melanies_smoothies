@@ -43,7 +43,7 @@ if ingredients_list:
         st.write('The search value for ', fruit_chosen,' is ', search_on, '.')
 
         st.subheader(fruit_chosen + ' Nutrition Information')
-        st_url = url + search_on.trim()
+        st_url = url + search_on.strip()
         st.write (st_url)
         smoothiefroot_response = requests.get(url)
         
