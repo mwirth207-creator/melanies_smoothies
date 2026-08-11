@@ -47,6 +47,8 @@ if ingredients_list:
         st.write (st_url)
         smoothiefroot_response = requests.get(url)
         
+        url = "https://my.smoothiefroot.com/api/fruit/Blueberry"    
+        smoothiefroot_response = requests.get(url)    
         st.write(smoothiefroot_response.status_code)
         st.write(smoothiefroot_response.text)
         st.stop()
