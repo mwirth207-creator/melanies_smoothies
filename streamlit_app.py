@@ -19,12 +19,7 @@ name_on_order = st.text_input('Name on Smoothie: ')
 st.write ('The name on your Smooothie will be ', name_on_order)
 
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'),col('SEARCH_ON'))
-#st.dataframe(data=my_dataframe, use_container_width=True)
-#st.stop()
-
 pd_df = my_dataframe.to_pandas()
-#st.dataframe(pd_df)
-#st.stop()
 
 ingredients_list = st.multiselect(
     'Choose up to 5 ingredients:'
@@ -46,22 +41,17 @@ if ingredients_list:
         
         #encoded_data = requests.models.RequestEncodingMixin._encode_params(search_on.strip())
     
-        st_url = "https://my.smoothiefroot.com/api/fruit/" + search_on.strip().lower()
-        #st_url = url + 'apple'
+        st_url = url + search_on.strip().lower()
         st.write (st_url)
         
-        #### TEMP ####
-        #url = "https://my.smoothiefroot.com/api/fruit/Blueberry"                  
         smoothiefroot_response = requests.get(st_url)
         
         #### TEMP ####
-        st.write(smoothiefroot_response.status_code)
-        st.write(smoothiefroot_response.text)
+        #st.write(smoothiefroot_response.status_code)
+        #st.write(smoothiefroot_response.text)
         #st.stop()
 
-    
         sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
-        #sf_df = st.dataframe(smoothiefroot_response.json(), use_container_width=True)
         st.text(ingredients_string)
 
         my_insert_stmt = """ insert into SMOOTHIES.public.ORDERS(ingredients, name_on_order)
