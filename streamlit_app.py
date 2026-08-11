@@ -46,13 +46,13 @@ if ingredients_list:
         
         #encoded_data = requests.models.RequestEncodingMixin._encode_params(search_on.strip())
     
-        #st_url = "https://my.smoothiefroot.com/api/fruit/" + search_on.strip().lower()
-        st_url = url + fruit_chosen
+        st_url = "https://my.smoothiefroot.com/api/fruit/" + search_on.strip().lower()
+        #st_url = url + 'apple'
         st.write (st_url)
         
         #### TEMP ####
         #url = "https://my.smoothiefroot.com/api/fruit/Blueberry"                  
-        smoothiefroot_response = requests.get(url)
+        smoothiefroot_response = requests.get(st_url)
         
         #### TEMP ####
         st.write(smoothiefroot_response.status_code)
