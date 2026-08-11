@@ -44,9 +44,9 @@ if ingredients_list:
 
         st.subheader(fruit_chosen + ' Nutrition Information')
         
-        encoded_data = requests.models.RequestEncodingMixin._encode_params(search_on.strip())
+        #encoded_data = requests.models.RequestEncodingMixin._encode_params(search_on.strip())
     
-        st_url = "https://my.smoothiefroot.com/api/fruit/" + encoded_data
+        st_url = "https://my.smoothiefroot.com/api/fruit/" + search_on.strip().lower()
         st.write (st_url)
         
         #### TEMP ####
